@@ -1,40 +1,44 @@
 alert(' \tBienvenido a seguros Cheee!!! \t \n \tEstamos para protegerte \t\n\t ◄ De ♥ Desde el ♥ ►\t\n Por favor ingrese los datos a continuación');
+//Creación variables contacto
 let nam3 = prompt('Ingrese su nombre: ');
 let lastName = prompt('Ingrese su apellido: ');
 let phone = prompt('Ingrese su número de teléfono: ')
 let mail = prompt('Ingrese su correo eléctronico: ')
-
-let netoCompra = (`Hola ${nam3} ${lastName} Gracais por elegir a seguros Cheee!!! Estamos para protegerte ◄ De ♥ Desde el ♥ ► Tu pedido es: \n `);
+//Creación variable que lista el pedido con cada producto seleccionado
+let preOreder = (`Hola ${nam3} ${lastName} Gracais por elegir a seguros Cheee!!! Estamos para protegerte ◄ De ♥ Desde el ♥ ► Tu pedido es: \n `);
+//Ciclo de control en el menú de compra
 do {
+    //Creación de menú de productos -Por opción tiene datos de entrada función-
     insurance = prompt(' \tSeleccione la opción que desea cotizar:\t \n 1 → VehiSeguro \n 2 → VidaSegura \n 3 → MascoSeguro \n 4 → EmpleSeguro \n 5 → HogarSguro');
     switch (insurance) {
         case '1':
             veicleModel = prompt('Ingrese el modelo del vehiculo: ');
             veicleValue = prompt('Ingrese el valor en el que esta avaludao su vehiculo:');
-            insuranceCar(veicleModel, veicleValue)
+            carInsurance(veicleModel, veicleValue)
             break;
         case '2':
             valueLife = prompt(" Recuerda que puedes asegurate desde $8'000.000 \n Ingrese el valor a asegurar:\n (Sin puntos ni comas)");
             actualyAge = prompt('Ingresa tu edad: ');
             numPre = prompt('Ingres el númro de enfermedades que padecio o padece, de la siguiente lista:\n \t   → Cancer | 2 → Tiroides | 3 → Leucemia\t \n  \t   → Cancer | 2 → Tiroides | 3 → Leucemia\t \n \t   → Cancer | 2 → Tiroides | 3 → Leucemia\t \n ')
-            insuranceLife(valueLife, actualyAge, numPre)
+            lifeInsurance(valueLife, actualyAge, numPre)
             break;
         case '3':
             agePet = prompt('Ingrese la edad de la mascota: ')
-            insurancePet(agePet)
+            petInsurance(agePet)
             break;
         case '4':
             workTime = prompt(' Ingrese el tiempo en la actual Empresa: \n En meses.')
             factType = prompt(' Ingrese tipo de contrato: \n Digite Fijo o Indefinido')
+            //Gatrantia de texto
             while (factType.toLowerCase() != 'fijo' && factType.toLowerCase() != 'indefinido') {
                 factType = prompt('\t¡ERROR!\t \n Ingrese tipo de contrato: \n Digite Fijo o Indefinido')
             }
             factType = factType.toLowerCase()
-            insuranceJob(workTime, factType);
+            jobInsurance(workTime, factType);
             break;
         case '5':
             houseValue = prompt(' Ingrese el Avaluo de la vivenda: \n sin puntos ni comas: ');
-            insuranceHome(houseValue);
+            homeInsurance(houseValue);
             break;
         default:
             alert(`Por favor ${nam3} ingrese un dígito del menu.`)
@@ -42,19 +46,18 @@ do {
             console.log(typeof(item))
             break;
     }
+    //Se lista 
     if (item != 0) {
-        netoCompra += (`\n\t${item}\t`)
+        preOreder += (`\n\t${item}\t`)
     }
-    flag = prompt('Para cotizar otro seguro digite "Si" o digite "No" para ver el resumen de la compra')
-} while (flag.toLowerCase() === 'si')
-alert(netoCompra
-
-)
-console.warn(netoCompra)
+    flag = prompt('Para cotizar otro seguro digite "s" → Sí o digite "n" → No para ver el resumen de la compra')
+} while (flag.toLowerCase() === 's')
+alert(preOreder)
+console.warn(preOreder)
 console.log('Fin')
-
+// Creación de funciones de que calcula cada opción del menú
 // 1 → car Insurance
-function insuranceCar(vModel, vValue) {
+function carInsurance(vModel, vValue) {
     if (vModel >= '2020') {
         if (vValue >= 150) {
             item = (`modelo1: ${vModel} precio1: ${vValue}`);
@@ -111,7 +114,7 @@ function insuranceCar(vModel, vValue) {
     return (item)
 }
 // 2 → life Insurance
-function insuranceLife(vLife, aAge, nPre) {
+function lifeInsurance(vLife, aAge, nPre) {
     if (nPre < 3 && aAge <= 60) {
         item = (`Puede adquirir cualquier seguro`)
     } else {
@@ -120,7 +123,7 @@ function insuranceLife(vLife, aAge, nPre) {
     return (item)
 }
 // 3 → pet Insurance
-function insurancePet(aPet) {
+function petInsurance(aPet) {
     if (aPet > 10) {
         item = (`Mas caro ${aPet}`);
     } else if (aPet >= 6) {
@@ -131,7 +134,7 @@ function insurancePet(aPet) {
     return (item)
 }
 // 4 → Job Insurance
-function insuranceJob(wTime, fType) {
+function jobInsurance(wTime, fType) {
     if (wTime > 6) {
         if (fType === 'indefinido') {
             item = (`Asegurado fijo ${fType}`)
@@ -148,7 +151,7 @@ function insuranceJob(wTime, fType) {
     return (item)
 }
 //5 → home Insurance
-function insuranceHome(value) {
+function homeInsurance(value) {
     if (value > 200) {
         item = (`Avaluo mayor: ${value}`)
     } else if (value > 100 && value <= 200) {
