@@ -9,7 +9,6 @@ do {
     //?Creación de menú de productos -Por opción tiene datos de entrada función-
     insurance = prompt(' \tSeleccione la opción que desea cotizar:\t \n 1 → VehiSeguro \n 2 → VidaSegura \n 3 → MascoSeguro \n 4 → EmpleSeguro \n 5 → HogarSguro');
     menuInsurance(insurance); //Funcion menú de compra
-    
     if (item != 0) {
         preOreder += (`\n\t${item}\t `); //Se lista 
     }
@@ -26,7 +25,7 @@ function menuInsurance(insur) { //* Menú Switch
             carInsurance(veicleModel, veicleValue);
             break;
         case '2':
-            valueLife = prompt(" Recuerda que puedes asegurate desde $8'000.000 \n Ingrese el valor a asegurar:\n (Sin puntos ni comas)");
+            valueLife = prompt(" Recuerda que puedes asegurate desde $800 \n Ingrese el valor a asegurar:\n (Sin puntos ni comas)");
             actualyAge = prompt('Ingresa tu edad: ');
             numPre = prompt('Ingres el númro de enfermedades que padecio o padece, de la siguiente lista:\n \t   → Cancer | 2 → Tiroides | 3 → Leucemia\t \n  \t   → Cancer | 2 → Tiroides | 3 → Leucemia\t \n \t   → Cancer | 2 → Tiroides | 3 → Leucemia\t \n ');
             lifeInsurance(valueLife, actualyAge, numPre);
@@ -56,8 +55,7 @@ function menuInsurance(insur) { //* Menú Switch
             break;
     }   
 }
-//* 1 → car Insurance
-function carInsurance(vModel, vValue) {
+function carInsurance(vModel, vValue) { //* 1 → car Insurance
     if (vModel >= '2020') {
         if (vValue >= 150) {
             item = (`Seguro Car, Full de modelo 2020: ${vModel} Avaluo Mayor: ${vValue}`);
@@ -113,8 +111,7 @@ function carInsurance(vModel, vValue) {
     }
     return (item);
 }
-//* 2 → life Insurance
-function lifeInsurance(vLife, aAge, nPre) {
+function lifeInsurance(vLife, aAge, nPre) { //* 2 → life Insurance
     if (nPre < 3 || aAge <= 60) {
         cutoa = (vLife / 4)/12
         item = (`Su seguro de ${vLife} tiene una cuota de : ${cuota}`)
@@ -123,8 +120,7 @@ function lifeInsurance(vLife, aAge, nPre) {
     }
     return (item);
 }
-//* 3 → pet Insurance
-function petInsurance(aPet) {
+function petInsurance(aPet) { //* 3 → pet Insurance
     cuota = 20
     if (aPet > 10) {
         item = (`Seguro Mascotas Mayores, de edad ${aPet}, Valor cuota ${cuota}`);
@@ -137,8 +133,7 @@ function petInsurance(aPet) {
     }
     return (item);
 }
-//* 4 → Job Insurance
-function jobInsurance(wTime, fType) {
+function jobInsurance(wTime, fType) { //* 4 → Job Insurance
     cuota = 20
     if (wTime > 6) {
         if (fType === 'indefinido') {
@@ -157,8 +152,7 @@ function jobInsurance(wTime, fType) {
     }
     return (item);
 }
-//* 5 → home Insurance
-function homeInsurance(value) {
+function homeInsurance(value) { //* 5 → home Insurance
     if (value > 200) {
         value = value*0.1
         cuota = value / 4
